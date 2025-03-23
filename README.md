@@ -81,16 +81,14 @@ The original LongRAG approach can be run with different retrieval and generation
 
 **LongRAG with LLama3.1-8b-Instruct**:
 
+```bash
+CUDA_VISIBLE_DEVICES=$devices python -W "ignore" main_0102.py --temperature 0 --model llama3.1-8b-instruct --r_path processed/sum_450_300_raw_1500_500_e5 --version run1 --dataset hotpotqa --top_k1 100 --top_k2 7 --rb --rl --ext --fil --ext_fil --chunk_ext 1 --with_reranking 1
+```
+
 **MacRAG with LLama3.1-8b-Instruct**:
 
 ```bash
-CUDA_VISIBLE_DEVICES=$devices python -W "ignore" main_macrag.py --temperature 0 --model llama3.1-8b-instruct --r_path processed/sum_450_300_raw_1500_500_e5 --version 0208_100_7_01_wo_merge --dataset 2wikimultihopqa --top_k1 100 --top_k2 7 --rb --rl --ext --fil --ext_fil --ext_rb --rb_ext_fil --chunk_ext 0 --merge_version 0 --upscaling 4 --with_reranking 1 --prompt_version 1
-```
-
-**Multi-model configuration example**:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1 python main.py --dataset hotpotqa --model gpt-3.5-turbo --lrag_model LongRAG-chatglm3-32k --ext_fil
+CUDA_VISIBLE_DEVICES=$devices python -W "ignore" main_macrag.py --temperature 0 --model llama3.1-8b-instruct --r_path processed/sum_450_300_raw_1500_500_e5 --version run1 --dataset 2wikimultihopqa --top_k1 100 --top_k2 7 --rb --rl --ext --fil --ext_fil --ext_rb --rb_ext_fil --chunk_ext 0 --merge_version 0 --upscaling 4 --with_reranking 1
 ```
 
 Note: Parameters like `--rb`, `--rl`, `--ext`, etc. can be combined to run different retrieval and generation configurations in a single execution.
