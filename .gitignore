@@ -1,0 +1,14 @@
+data/
+original_data/
+*.zip
+
+DS_Store    
+__pycache__/
+.env
+*.log
+*.joblib
+src/log/
+
+figures/
+deprecated/
+tmp/
