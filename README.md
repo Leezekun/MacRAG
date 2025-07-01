@@ -62,6 +62,10 @@ cd src
 python gen_index.py
 ```
 
+## ⚙️ Processed Data
+
+We have also provided processed data at: https://drive.google.com/file/d/12yAlWecENLcDT-pqK-roymRwzAS6my-n/view?usp=sharing
+
 ## 📊 Evaluation
 
 Here are example scripts for performing inference and evaluation on benchmark datasets. To get started, first navigate to the `src` directory.
