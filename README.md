@@ -105,10 +105,12 @@ Evaluation results will be saved in the `log` directory.
 If you find our work useful, please consider citing our paper:
 
 ```bibtex
-@article{mac2024,
-  title={MacRAG: Compress, Slice, and Scale-up for Multi-Scale Adaptive Context RAG},
-  author={TBD},
-  journal={arXiv preprint},
-  year={2024}
+@misc{lim2025macrag,
+    title={MacRAG: Compress, Slice, and Scale-up for Multi-Scale Adaptive Context RAG},
+    author={Woosang Lim and Zekun Li and Gyuwan Kim and Sungyoung Ji and HyeonJung Kim and Kyuri Choi and Jin Hyuk Lim and Kyungpyo Park and William Yang Wang},
+    year={2025},
+    eprint={2505.06569},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
 }
 ```
