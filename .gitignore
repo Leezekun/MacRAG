@@ -12,3 +12,4 @@ src/log/
 figures/
 deprecated/
 tmp/
+test.py
