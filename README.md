@@ -87,7 +87,7 @@ The original LongRAG approach can be run with different retrieval and generation
 **LongRAG with LLama3.1-8b-Instruct**:
 
 ```bash
-CUDA_VISIBLE_DEVICES=$devices python -W "ignore" main_0102.py --temperature 0 --model llama3.1-8b-instruct --r_path processed/sum_450_300_raw_1500_500_e5 --version run1 --dataset hotpotqa --top_k1 100 --top_k2 7 --rb --rl --ext --fil --ext_fil --chunk_ext 1 --with_reranking 1
+CUDA_VISIBLE_DEVICES=$devices python -W "ignore" main_longrag.py --temperature 0 --model llama3.1-8b-instruct --r_path processed/sum_450_300_raw_1500_500_e5 --dataset hotpotqa --top_k1 100 --top_k2 7 --rb --rl --ext --fil --ext_fil
 ```
 
 **MacRAG with LLama3.1-8b-Instruct**:

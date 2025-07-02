@@ -624,7 +624,6 @@ def filter(question, rank_docs, temperature):
                                  [(lrag_model_name, lrag_model, lrag_tokenizer, prompt, lrag_maxlen, 32) for prompt in
                                   prompts])
 
-    ### Modified by Woosang
     count_selected = 0
     if args.upscaling == 1:
         for i, r in enumerate(all_responses):
@@ -663,7 +662,6 @@ def filter(question, rank_docs, temperature):
     if len(selected) == 0:
         selected = rank_docs
     return selected
-    ### Modified by Woosang
 
 
 def r2long_unique(rerank, match_id):
@@ -683,10 +681,6 @@ def extractor_rb(question, rerank, match_id, temperature):
 
     output: summary
     '''
-    ### Modified by Woosang
-    # question, rerank, match_id, args.temperature
-    ### Modified by Woosang
-
     content = ''.join(rerank)
     query = f"{content}.\n\nBased on the above background, please output the information you need to cite to answer the question below.\n{question}"
     response = pred(lrag_model_name, lrag_model, lrag_tokenizer, query, lrag_maxlen, 1000, temperature=temperature)[0]
@@ -704,12 +698,10 @@ def extractor(question, docs, match_id, temperature):
 
     output: summary
     '''
-    ### Modified by Woosang
     if args.upscaling == 1:
         long_docs = s2l_doc_look_up(docs, match_id, lrag_maxlen, args.top_k2)[0]
     else:
         long_docs = s2l_doc(docs, match_id, lrag_maxlen)[0]
-    ### Modified by Woosang
 
     ### Original Script
     # long_docs = s2l_doc(docs, match_id, lrag_maxlen)[0]
@@ -814,7 +806,6 @@ def sort_section(args, question, section, match_id):
         scores = cross_model(**features).logits.squeeze(dim=1)
     sort_scores = torch.argsort(scores, dim=0, descending=True).cpu()
 
-    ### Modified by Woosang
     with open(f'../data/corpus/{args.r_path}/{args.dataset}/id_to_rawid.json', encoding='utf-8') as f:
         id_to_rawid = json.load(f)
 
@@ -860,7 +851,6 @@ def sort_section(args, question, section, match_id):
             # Update doc_ids
             doc_ids = doc_ids[:args.top_k2]
 
-    ### Modified by Woosang
     if args.look_up_initial_chunk and args.chunk_ext >= 0:  # >= implied alway merging whatever chunk_ext values are, if > then, h=0 did not make merging too.
         print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         print('Triggered: args.look_up_initial_chunk & args.chunk_ext > 0:')
@@ -899,9 +889,7 @@ def sort_section(args, question, section, match_id):
 
                     else:
                         pass
-        ### Modified by Woosang & Jin
 
-        ### Modified by Woosang
         for key in doc_id_with_chunk_and_chunk_id.keys():
             print('Before Sorting: ', doc_id_with_chunk_and_chunk_id[key])
             doc_id_with_chunk_and_chunk_id[key] = sorted(doc_id_with_chunk_and_chunk_id[key], key=lambda x: x[0])
@@ -1003,7 +991,7 @@ def sort_section(args, question, section, match_id):
 
         # import pdb; pdb.set_trace()
         return extended_context_output_result, extended_context_output_match_id
-        ### Modified by Woosang
+
     del features
     del scores
     torch.cuda.empty_cache()
@@ -1210,7 +1198,6 @@ if __name__ == '__main__':
         "Ext_RB": F1_scorer(ext_rb_preds, answer),
         "RB_Ext_Fil": F1_scorer(rb_ext_fil_preds, answer)
     }
-    # 24.12.24.Jin ADD
     keywords = ["none-api", "provide"]
     count_none = {
         "Ext": count_keywords(ext_preds, keywords)["none-api"],
